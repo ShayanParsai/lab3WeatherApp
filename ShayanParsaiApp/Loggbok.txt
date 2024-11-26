@@ -1,0 +1,34 @@
+--Loggbok för projektet--
+
+-
+2024-11-24 - 6 Timmar
+
+Arbete utfört : Påbörjade projektet. Skapade ett nytt Visual Studio-projekt och satte upp grundstrukturen för lösningen. 
+Installerade nödvändiga NuGet-paket för Entity Framework och SQL Server. Började läsa igenom uppgiftsbeskrivningen.
+
+Problem : Hade problem med att installera DB eftersom jag försökte skapa 3 projekt i ett soloution istället för att separera koden i klasser på samma projekt. 
+Problemet löste sig självt när jag istället gjorde allt i 3 olika klasser istället.
+-
+2024-11-25 - 3 Timmar
+
+Arbete utfört : Implementerade databasmodellen Measurement och skapade DbContext-klassen. 
+Skrev kod för att importera data från CSV-filen till databasen.
+
+Problem : Hade problem med Culture, ja jag vet, du nämnde det. Hade glömt... Fick hjälp utav chat GPT att upptäcka problemet när jag bad den felsöka koden som VÄGRADE funka. 
+Då förklarade den allt med decimalpunkten osv. jag löste sedan problemet med en enkel rad kod.
+-
+2024-11-26 - 5 Timmar
+
+Arbete utfört : Första testningen av CSV-import. Märkte att vissa temperaturer (negativa) inte tolkades korrekt. 
+Lade till kod för att hantera olika minustecken och validera data.
+
+Problem : Att felsöka varför negativa temperaturer inte fungerade tog mycket tid. det visade sig
+vara att vissa minus tecken egentligen INTE var minustecken utan det var Unicode-tecken för minus (−)
+-
+2024-11-27 - 8 Timmar
+
+Arbete utfört : Implementerade funktioner för att beräkna alla krav i uppgiften såsom medeltempratur, mögel, höst vinter osv osv osv. 
+Jag dubellkollade så allt stämmer enligt mig, och skickar nu in uppgiften! :) 
+
+Problem : jag skrev koden, och sedan efter massa testande och bugfix, så märkte jag att den ska räkna utomhus och inomhus separat......... 
+vilket ledde till att jag fick göra om koden och logiken i alla metoderna. jag har lärt mig att läsa uppfiten först och sedan lösa den.
