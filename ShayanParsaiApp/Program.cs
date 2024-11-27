@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace ShayanParsaiApp
 {
@@ -19,15 +22,18 @@ namespace ShayanParsaiApp
                 return;
             }
 
-            using (var context = new ShayanParsaiDbContext()) // Initiera databaskontext
+            using (var context = new ShayanParsaiDbContext())
             {
+                // Säkerställ att databasen är migrerad till senaste versionen
+                context.EnsureDatabaseMigrated();
+
                 // Rensa tabellen innan ny import
                 context.Measurements.RemoveRange(context.Measurements);
                 context.SaveChanges();
                 Console.WriteLine("Tidigare data rensad från databasen.");
 
                 // Läs och importera CSV-data
-                var lines = File.ReadAllLines(filePath); // Läs alla rader från filen
+                var lines = File.ReadAllLines(filePath);
                 foreach (var line in lines.Skip(1)) // Hoppa över rubrikraden
                 {
                     try
@@ -51,7 +57,7 @@ namespace ShayanParsaiApp
 
                         context.Measurements.Add(measurement);
                     }
-                    catch (Exception ex) // Så att vi inte dyker på näsan :) 
+                    catch (Exception ex) // Så att vi inte dyker på näsan :)
                     {
                         Console.WriteLine($"Fel vid bearbetning av rad: {line}. Fel: {ex.Message}");
                     }

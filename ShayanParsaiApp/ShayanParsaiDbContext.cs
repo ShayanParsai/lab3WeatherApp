@@ -11,5 +11,11 @@ namespace ShayanParsaiApp
             // Använd SQL Server och anslut till en lokal databas
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=ShayanParsaiDb;Trusted_Connection=True;");
         }
+
+        // Säkerställ att databasen migreras till senaste versionen
+        public void EnsureDatabaseMigrated()
+        {
+            Database.Migrate();
+        }
     }
 }

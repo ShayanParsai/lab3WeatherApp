@@ -12,7 +12,7 @@ using ShayanParsaiApp;
 namespace ShayanParsaiApp.Migrations
 {
     [DbContext(typeof(ShayanParsaiDbContext))]
-    [Migration("20241126200154_InitialCreate")]
+    [Migration("20241127082854_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
